@@ -1,6 +1,6 @@
 import express from 'express'
 import type { Request, Response, NextFunction } from 'express'
-
+import { cleanupAdminSessions } from './services/admin/cleanUpAdminSessions'
 import { router } from '../routes'
 import cors from "cors"
 
@@ -40,6 +40,18 @@ app.use((err: Error,req: Request,res: Response,next: NextFunction) => {
   }
 )
 
-app.listen(5000, () => {
-  console.log('SpeakSmart - server online !!!!')
-})
+// app.listen(5000, () => {
+//   console.log('SpeakSmart - server online !!!!')
+// })
+
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`SpeakSmart - server online on port ${PORT}`);
+
+  // Executa uma limpeza ao iniciar o servidor
+  cleanupAdminSessions();
+
+  // Repete a limpeza a cada 24 horas
+  setInterval(cleanupAdminSessions, 24 * 60 * 60 * 1000);
+});
