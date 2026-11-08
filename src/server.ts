@@ -42,10 +42,10 @@ app.use((err: Error,req: Request,res: Response,next: NextFunction) => {
 
 
 
-const PORT = Number(process.env.PORT) || 5000;
+const PORTA = Number(process.env.PORT) || 5000;
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`SpeakSmart - server online on port ${PORT}`);
+app.listen(PORTA, '0.0.0.0', () => {
+  console.log(`SpeakSmart - server online on port ${PORTA}`);
 
   // Executa uma limpeza ao iniciar o servidor
   cleanupAdminSessions();
