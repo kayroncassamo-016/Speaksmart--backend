@@ -16,7 +16,8 @@ app.use(express.json())
 // O JSON recebido no body da requisição é convertido
 // em um objeto JavaScript e disponibilizado em req.body.
 app.use(cors({
-  origin: "http://localhost:3000",
+  
+  origin: ["https://speaksmartt.vercel.app","http://localhost:3000"],
   credentials: true
 }))
 
